@@ -1,0 +1,22 @@
+static_analysis_summary,score_breakdown_File Type Mismatch,score_breakdown_High Entropy,score_breakdown_Suspicious Strings,score_breakdown_YARA Matches,score_breakdown_PE Anomalies,score_breakdown_VirusTotal Detections,static_analysis_score,file_info_file_name,file_info_file_size_bytes,file_info_file_extension,file_info_true_file_type,file_info_entropy,hashes_md5,hashes_sha1,hashes_sha256,string_analysis_found_ips,string_analysis_found_urls,string_analysis_found_keywords,yara_analysis_error,pe_analysis_error,virustotal_report_error,ai_summary
+"[""CRITICAL: File extension is '.py' but true type is an executable!""]",50,0,0,0,0,0,50,main.py,5187,.py,"Python script, ASCII text executable",4.906445127790617,c269b9d580740a10c7d5ad65c937fe92,c597dbb19dfdceba4cb1f39aa15d85cccf06676a,1efb1ab2de9d98c6e11c71eea77a07c7689a903fb57d36e59b2e05d08d82e0cc,[],[],[],YARA not installed or rules not compiled.,Not a valid PE file.,Not Found,"## 1. Threat Summary
+
+A critical finding indicates the presence of an executable file disguised with a `.py` (Python script) extension. This is a clear attempt at **defense evasion** and **masquerading** to trick users or automated security tools into believing it's a harmless script, while its true nature is a malicious binary. The lack of VirusTotal or YARA matches suggests it could be a newly compiled, custom, or less common piece of malware. Its primary goal is likely **execution** on a victim's system, potentially via user interaction.
+
+## 2. MITRE ATT&CK Mapping
+
+*   **Tactic: Defense Evasion (TA0005)**
+    *   T1036 - Masquerading
+        *   T1036.002 - Disguise File Type: The file's extension (`.py`) does not match its true executable file type, a common technique to evade detection or trick users.
+
+*   **Tactic: Execution (TA0002)**
+    *   T1204 - User Execution
+        *   T1204.002 - Malicious File: This technique describes an adversary relying on a user to execute a malicious file, which is highly probable given the disguised file type.
+
+**Actionable Intelligence:**
+
+*   **Containment & Eradication:** Immediately isolate and remove this specific file from any affected endpoints.
+*   **Forensic Analysis:** Conduct in-depth analysis (e.g., sandboxing, static analysis) of the executable to determine its true payload, capabilities, and indicators of compromise (IOCs).
+*   **Source Investigation:** Determine the origin of this file (e.g., email attachment, web download, internal share) to identify the initial compromise vector and potential spread.
+*   **Security Controls Review:** Evaluate endpoint detection and response (EDR) rules, file integrity monitoring, and email/web gateway policies to prevent similar masquerading attempts from succeeding.
+*   **User Awareness:** Reinforce security awareness training to educate users about suspicious file extensions and the dangers of executing unexpected files."
