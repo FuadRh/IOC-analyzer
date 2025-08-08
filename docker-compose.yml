@@ -1,0 +1,28 @@
+# docker-compose.yml
+# This file defines how to run your application service using Docker.
+
+services:
+  soc_analyzer:
+    # Build the Docker image using the Dockerfile in the current directory.
+    build: .
+    # Assign a consistent, easy-to-remember name to the container.
+    container_name: soc_analyzer_app
+    # Use the env_file directive to securely pass all variables from the .env file
+    # into the container at runtime. This is cleaner and more secure than copying the file.
+    env_file:
+      - .env
+    # Volumes are used to share files and resources between the host and the container.
+    volumes:
+      # Persist analysis reports by mapping the host's 'reports' folder to the container's '/app/reports'.
+      - ./reports:/app/reports
+      # Share the X11 socket to allow the GUI inside the container to display on the host machine.
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # FIX: Map the user's home directory on the host to a folder inside the container.
+      # This allows the application to access and analyze files from the host machine.
+      # The '~' symbol represents your home directory.
+      - ~/:/scannable_files
+    # Pass the host's DISPLAY environment variable to the container so it knows where to draw the GUI.
+    # This is crucial for GUI applications in Docker.
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1 # A common fix for Qt-based GUIs in Docker.

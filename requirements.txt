@@ -1,0 +1,7 @@
+pefile
+requests
+reportlab
+yara-python
+python-magic
+httpx
+python-dotenv

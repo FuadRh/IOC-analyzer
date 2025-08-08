@@ -1,0 +1,19 @@
+# .dockerignore
+# This file lists files and directories to exclude from the build context.
+# It's crucial for security and keeping the image size small.
+
+# Ignore the Python virtual environment.
+venv/
+
+# Ignore Python bytecode and cache files.
+__pycache__/
+*.pyc
+*.pyo
+
+# CRITICAL: Ignore the .env file to keep secrets out of the image.
+.env
+
+# Ignore Git directory and other common development files.
+.git/
+.gitignore
+*.md
