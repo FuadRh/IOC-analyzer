@@ -37,8 +37,8 @@ VIRUSTOTAL_API_KEY=YOUR_VT_API_KEY_HERE
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
 
 # --- API Endpoints (Defaults are usually fine) ---
-IP_API_ENDPOINT=[http://ip-api.com/json/](http://ip-api.com/json/)
-GEMINI_ENDPOINT=[https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-1.5:generateContent](https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-1.5:generateContent)
+IP_API_ENDPOINT=http://ip-api.com/json/
+GEMINI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-1.5:generateContent
 
 2. Authorize GUI Display (Linux/macOS Only)
 
