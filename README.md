@@ -1,64 +1,116 @@
-SOC Tier 1 Analysis Framework
+# SOC Tier 1 Analysis Framework
 
-This project is an automated file and URL analysis framework designed to simulate the workflow of a SOC Tier 1 Analyst. It performs static file analysis, enriches indicators using VirusTotal, and provides a comprehensive report with a final threat verdict, all packaged in an easy-to-use graphical interface.
+**IOC Analyzer** is an automated file and URL analysis tool designed to simulate the workflow of a SOC Tier 1 Analyst.  
+It helps you quickly analyze suspicious files and URLs, enriches indicators with threat intelligence, and generates professional reports.  
+The entire application is containerized with Docker for easy, one-command deployment.
 
-The entire application is containerized with Docker, allowing it to be deployed and run with a single command on any machine with Docker installed.
-Features
+---
 
-    Static File Analysis: Computes hashes (MD5, SHA-1, SHA-256), entropy, and checks for suspicious strings, YARA rule matches, and PE file anomalies. It can also analyze files within ZIP archives.
+## 🚀 Features
 
-    Threat Intelligence Enrichment: Enriches file hashes and URLs with the latest scan data from VirusTotal.
+- **Static File Analysis**
+  - Calculates MD5, SHA-1, and SHA-256 hashes
+  - Measures file entropy
+  - Detects suspicious strings
+  - Matches YARA rules
+  - Flags anomalies in PE files
+  - Analyzes files inside ZIP archives
 
-    Geo-IP Enrichment: Identifies and provides location data for any IP addresses found within a file's contents.
+- **Threat Intelligence Enrichment**
+  - Enriches file hashes and URLs with the latest VirusTotal scan data
 
-    AI-Powered Summaries: Uses the Gemini API to provide a natural language threat summary and map potential adversary behavior to the MITRE ATT&CK framework.
+- **Geo-IP Enrichment**
+  - Identifies and locates IP addresses found in files
 
-    Multi-Format Reporting: Automatically exports detailed analysis results to JSON, CSV, and professional PDF formats.
+- **AI-Powered Summaries**
+  - Uses Gemini API to generate natural language threat summaries
+  - Maps findings to the MITRE ATT&CK framework
 
-    Graphical User Interface: An intuitive Tkinter GUI for interactive analysis of files and URLs.
+- **Multi-Format Reporting**
+  - Exports results automatically as JSON, CSV, and PDF
 
-    Secure & Containerized: Fully containerized with Docker for easy, one-command deployment. API keys are handled securely and are never stored in the Docker image.
+- **Graphical User Interface**
+  - Simple Tkinter GUI for interactive file and URL analysis
 
-Prerequisites
+- **Secure & Containerized**
+  - Dockerized for easy, secure deployment
+  - API keys are handled securely and never stored in the Docker image
 
-    Docker
+---
 
-    Docker Compose
+## 🛠 Prerequisites
 
-How to Run
-1. Create the Environment File
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-Before running the application, you must provide your API keys. In the project's root directory, create a new file named .env.
+---
 
-Copy and paste the following template into your .env file and replace the placeholder text with your actual API keys.
+## ⚡ Quick Start
 
-# --- API Keys (Replace with your actual keys) ---
+### 1. Create the Environment File
+
+In the project root directory, create a file named `.env` and add your API keys:
+
+```env
+# --- API Keys (replace with your actual keys) ---
 VIRUSTOTAL_API_KEY=YOUR_VT_API_KEY_HERE
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
 
-# --- API Endpoints (Defaults are usually fine) ---
+# --- API Endpoints (defaults are usually fine) ---
 IP_API_ENDPOINT=http://ip-api.com/json/
 GEMINI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-1.5:generateContent
+```
 
-2. Authorize GUI Display (Linux/macOS Only)
+---
 
-If you are on Linux or macOS, open a terminal and run the following command. This is a one-time step per session that allows Docker to display the application's GUI on your screen.
+### 2. Authorize GUI Display (Linux/macOS only)
 
+Open a terminal and run (one-time per session):
+
+```sh
 xhost +local:docker
+```
 
-3. Build and Run the Container
+---
 
-Open a terminal in the project's root directory (the same folder that contains docker-compose.yml) and run the following command:
+### 3. Build and Run the Container
 
+From the project root directory (where `docker-compose.yml` is), run:
+
+```sh
 docker-compose up --build
+```
 
-This command will build the Docker image, start the container, and launch the application's GUI.
-How to Use the Application
+This will build the Docker image, start the container, and launch the application's GUI.
 
-    The application's graphical interface will launch automatically.
+---
 
-    To analyze files from your computer, click the "Analyze Files..." button. The file dialog will open directly to a /scannable_files directory, which is securely mapped to your computer's filesystem, allowing you to select any file for analysis.
+##  How to Use
 
-    To analyze a URL, paste it into the entry box and click "Analyze URL".
+1. **The graphical interface will launch automatically.**
+2. **Analyze Files:**  
+   Click the `Analyze Files...` button. Select files from the `/scannable_files` directory (securely mapped to your computer).
+3. **Analyze URLs:**  
+   Paste a URL into the entry box and click `Analyze URL`.
+4. **Reports:**  
+   All analysis results are saved automatically in `reports/` as JSON, CSV, and PDF.
 
-    All analysis reports are automatically saved in multiple formats (JSON, CSV, PDF) inside the reports folder in the project directory.
+---
+
+##  Project Structure
+
+- `/scannable_files` — Directory mapped for file analysis
+- `/reports` — All output reports saved here
+
+---
+
+##  Notes
+
+- API keys are **never** stored in the Docker image.
+- If you encounter issues, make sure Docker and Docker Compose are installed and up to date.
+
+---
+
+##  Need Help?
+
+Open an issue or discussion on GitHub for support or questions!
