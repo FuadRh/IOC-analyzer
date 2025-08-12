@@ -6,7 +6,7 @@ The entire application is containerized with Docker for easy, one-command deploy
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Static File Analysis**
   - Calculates MD5, SHA-1, and SHA-256 hashes
@@ -38,14 +38,14 @@ The entire application is containerized with Docker for easy, one-command deploy
 
 ---
 
-## 🛠 Prerequisites
+## Prerequisites
 
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 ### 1. Create the Environment File
 
