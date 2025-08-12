@@ -58,7 +58,7 @@ GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
 
 # --- API Endpoints (defaults are usually fine) ---
 IP_API_ENDPOINT=http://ip-api.com/json/
-GEMINI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-1.5:generateContent
+GEMINI_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent
 ```
 
 ---
